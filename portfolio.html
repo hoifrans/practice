@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Francis Carl Portfolio</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Trebuchet MS, sans-serif;
+background:linear-gradient(135deg,#0b0014,#2b0040);
+color:white;
+overflow:hidden;
+}
+
+/* SLIDES */
+
+.slide{
+width:100vw;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:30px;
+position:absolute;
+opacity:0;
+transform:scale(.9);
+transition:0.6s;
+}
+
+.slide.active{
+opacity:1;
+transform:scale(1);
+}
+
+/* TITLE */
+
+h1{
+font-size:40px;
+margin-bottom:10px;
+color:#e9d5ff;
+}
+
+p{
+max-width:600px;
+font-size:18px;
+color:#f3e8ff;
+}
+
+/* SKILLS BOX */
+
+.skills{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+justify-content:center;
+margin-top:20px;
+}
+
+.skill{
+padding:10px 20px;
+border-radius:12px;
+background:#1a002b;
+border:1px solid #9333ea;
+box-shadow:0 0 10px #7e22ce;
+}
+
+/* PROJECT CARDS */
+
+.projects{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:20px;
+}
+
+.project{
+width:220px;
+padding:20px;
+border-radius:15px;
+background:#120020;
+box-shadow:0 0 20px #9333ea;
+transition:0.3s;
+}
+
+.project:hover{
+transform:scale(1.05);
+box-shadow:0 0 30px #a855ff;
+}
+
+/* NAV BUTTONS */
+
+.nav{
+position:fixed;
+bottom:20px;
+width:100%;
+display:flex;
+justify-content:center;
+gap:20px;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:10px;
+font-weight:bold;
+background:#9333ea;
+color:white;
+cursor:pointer;
+box-shadow:0 0 15px #9333ea;
+}
+
+button:hover{
+background:#a855ff;
+}
+
+/* PROGRESS BAR */
+
+.progress{
+position:fixed;
+top:0;
+left:0;
+height:5px;
+background:#a855ff;
+width:0%;
+transition:0.4s;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- SLIDE 1 -->
+
+<div class="slide active">
+<h1>Francis Carl</h1>
+<p>Welcome to my portfolio. This presentation shows some of my skills and projects I created while learning programming and web design.</p>
+</div>
+
+<!-- SLIDE 2 -->
+
+<div class="slide">
+<h1>About Me</h1>
+<p>I am interested in technology, coding and building websites. I enjoy learning how things work in computers and creating simple projects.</p>
+</div>
+
+<!-- SLIDE 3 -->
+
+<div class="slide">
+<h1>Skills</h1>
+
+<div class="skills">
+
+<div class="skill">HTML</div>
+<div class="skill">CSS</div>
+<div class="skill">JavaScript</div>
+<div class="skill">Basic Web Design</div>
+<div class="skill">GitHub</div>
+
+</div>
+
+</div>
+
+<!-- SLIDE 4 -->
+
+<div class="slide">
+<h1>Projects</h1>
+
+<div class="projects">
+
+<div class="project">
+<h3>Interactive Web Page</h3>
+<p>A responsive page with animations and effects.</p>
+</div>
+
+<div class="project">
+<h3>Video Landing Page</h3>
+<p>A page that auto plays a video when opened.</p>
+</div>
+
+<div class="project">
+<h3>Profile Website</h3>
+<p>A personal website with links and profile cards.</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- SLIDE 5 -->
+
+<div class="slide">
+<h1>Thank You</h1>
+<p>Thank you for viewing my portfolio presentation.</p>
+</div>
+
+<!-- NAVIGATION -->
+
+<div class="nav">
+<button onclick="prev()">Previous</button>
+<button onclick="next()">Next</button>
+</div>
+
+<script>
+
+let slides=document.querySelectorAll(".slide")
+let progress=document.getElementById("progress")
+let index=0
+
+function showSlide(){
+
+slides.forEach(s=>s.classList.remove("active"))
+slides[index].classList.add("active")
+
+let percent=(index/(slides.length-1))*100
+progress.style.width=percent+"%"
+
+}
+
+function next(){
+if(index<slides.length-1){
+index++
+showSlide()
+}
+}
+
+function prev(){
+if(index>0){
+index--
+showSlide()
+}
+}
+
+/* swipe for mobile */
+
+let startX=0
+
+document.addEventListener("touchstart",e=>{
+startX=e.touches[0].clientX
+})
+
+document.addEventListener("touchend",e=>{
+let endX=e.changedTouches[0].clientX
+
+if(startX-endX>50) next()
+if(endX-startX>50) prev()
+
+})
+
+</script>
+
+</body>
+</html>

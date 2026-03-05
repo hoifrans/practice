@@ -1,0 +1,279 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cute Link Page</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Comic Sans MS', cursive;
+background: linear-gradient(135deg,#ff9de2,#8fd3ff,#ffd6a5);
+background-size:400% 400%;
+animation:bgmove 10s infinite alternate;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+@keyframes bgmove{
+0%{background-position:0% 50%;}
+100%{background-position:100% 50%;}
+}
+
+.main{
+text-align:center;
+width:90%;
+max-width:900px;
+}
+
+/* TOP PHOTO */
+
+.top-photo img{
+width:200px;
+height:200px;
+border-radius:25px;
+border:6px solid white;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+object-fit:cover;
+}
+
+/* CARD SECTION */
+
+.cards{
+margin-top:40px;
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+}
+
+.card{
+width:150px;
+height:200px;
+perspective:1000px;
+cursor:pointer;
+}
+
+.inner{
+width:100%;
+height:100%;
+position:relative;
+transition:transform 0.8s;
+transform-style:preserve-3d;
+}
+
+.card.flip .inner{
+transform:rotateY(180deg);
+}
+
+.front,.back{
+position:absolute;
+width:100%;
+height:100%;
+backface-visibility:hidden;
+background:white;
+border-radius:18px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.back{
+transform:rotateY(180deg);
+}
+
+.card img{
+width:100px;
+height:100px;
+border-radius:12px;
+object-fit:cover;
+}
+
+.card p{
+margin-top:10px;
+font-weight:bold;
+font-size:16px;
+}
+
+/* LINKS */
+
+.links{
+margin-top:45px;
+display:flex;
+flex-direction:column;
+gap:15px;
+align-items:center;
+}
+
+.link{
+width:280px;
+padding:15px;
+border-radius:15px;
+text-decoration:none;
+font-weight:bold;
+color:#333;
+background:white;
+box-shadow:0 6px 15px rgba(0,0,0,0.2);
+transition:0.25s;
+}
+
+.link:hover{
+transform:scale(1.07);
+background:#ffe6fa;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.cards{
+gap:15px;
+}
+
+.card{
+width:130px;
+height:180px;
+}
+
+.link{
+width:90%;
+}
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="main">
+
+<!-- TOP PHOTO -->
+<div class="top-photo">
+<img src="https://via.placeholder.com/200">
+</div>
+
+
+<!-- PHOTO CARDS -->
+
+<div class="cards">
+
+<div class="card">
+<div class="inner">
+
+<div class="front">
+<img src="https://via.placeholder.com/150">
+<p>Alice</p>
+</div>
+
+<div class="back">
+<img src="https://via.placeholder.com/150">
+<p>Alice</p>
+</div>
+
+</div>
+</div>
+
+
+<div class="card">
+<div class="inner">
+
+<div class="front">
+<img src="https://via.placeholder.com/150">
+<p>Bob</p>
+</div>
+
+<div class="back">
+<img src="https://via.placeholder.com/150">
+<p>Bob</p>
+</div>
+
+</div>
+</div>
+
+
+<div class="card">
+<div class="inner">
+
+<div class="front">
+<img src="https://via.placeholder.com/150">
+<p>Charlie</p>
+</div>
+
+<div class="back">
+<img src="https://via.placeholder.com/150">
+<p>Charlie</p>
+</div>
+
+</div>
+</div>
+
+
+<div class="card">
+<div class="inner">
+
+<div class="front">
+<img src="https://via.placeholder.com/150">
+<p>Daisy</p>
+</div>
+
+<div class="back">
+<img src="https://via.placeholder.com/150">
+<p>Daisy</p>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+<!-- LINK BOXES -->
+
+<div class="links">
+
+<a class="link" href="https://example.com" target="_blank">
+My Portfolio
+</a>
+
+<a class="link" href="https://youtube.com" target="_blank">
+My YouTube Channel
+</a>
+
+<a class="link" href="https://instagram.com" target="_blank">
+Instagram
+</a>
+
+<a class="link" href="https://github.com" target="_blank">
+GitHub
+</a>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* CARD FLIP */
+
+document.querySelectorAll(".card").forEach(card=>{
+card.addEventListener("click",()=>{
+card.classList.toggle("flip");
+});
+});
+
+</script>
+
+</body>
+</html>
+```
